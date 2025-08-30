@@ -17,7 +17,6 @@ class Producto {
 
 
     public function create($data) {
-        echo "Entró al método create";
         $nombre = $this->conn->real_escape_string($data['nombre']);
         $precio = $this->conn->real_escape_string($data['precio']);
         $stock = $this->conn->real_escape_string($data['stock']);
