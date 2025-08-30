@@ -35,7 +35,7 @@ class ProductoController {
     public function destroy ($id) {
         if ($this->productoModel->delete($id)) {
             // Redirige o muestra mensaje
-            header("Location: ../views/productos/index.php?msg=deleted");
+            header("Location: ./views/productos/index.php");
             exit();
         } else {
             echo "Error al eliminar el producto.";
