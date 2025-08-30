@@ -18,22 +18,22 @@
                 <form action="../../newProducto.php" method="POST">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre del producto</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: Empanada de pollo" required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Producto" required>
                     </div>
 
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripción</label>
                         <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Breve descripción del producto"></textarea>
-                    </div>
+                    </div> -->
 
                     <div class="mb-3">
                         <label for="precio" class="form-label">Precio</label>
-                        <input type="number" class="form-control" id="precio" name="precio" step="0.01" placeholder="Ej: 2500" required>
+                        <input type="number" class="form-control" id="precio" name="precio" step="0.01" placeholder="Precio" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="stock" class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="stock" name="stock" placeholder="Ej: 100" required>
+                        <input type="number" class="form-control" id="stock" name="stock" placeholder="Unidades" required>
                     </div>
 
                     <!-- <div class="mb-3">
