@@ -4,7 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Dotenv\Dotenv;
 
 // Solo cargar .env si existe (local)
-if (file_exists(__DIR__ . '/../')) {
+if (file_exists(__DIR__ . '/../.env')) {
     $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
     $dotenv->load();
 }
