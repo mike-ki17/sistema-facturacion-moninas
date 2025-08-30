@@ -18,19 +18,18 @@ class ProductoController {
 
     Public function store () {
        
-      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $result = $this->productoModel->create($_POST);
-
-        if ($result) {
-            header("Location: /views/productos/index.php");
-            exit;
-        } else {
-            echo "❌ Error al registrar el producto.";
-        }
-        } else {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $result = $this->productoModel->create($_POST);
+            if ($result) {
+                header("Location: /views/productos/index.php");
+                exit;
+            }else {
+                echo "❌ Error al registrar el producto.";
+            }
+        }else {
             echo "Método inválido.";
         }
-        }
+    }
 
     public function destroy ($id) {
         if ($this->productoModel->delete($id)) {

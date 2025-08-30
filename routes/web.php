@@ -2,15 +2,18 @@
 // routes/web.php
 
 require_once __DIR__ . "/../controllers/ProductoController.php";
+require_once __DIR__ . '/../config/db.php';
 
-$routes = [
-    "/view/productos/index" => function () {
-        // var_dump("Entró a productos index");
-        // exit;
-    },
-    "/productos/nuevo" => function () {
-        echo "<h1>Crear Producto</h1>";
-        // $controller = new ProductoController();
-        // $controller->store(); // Llamar al método
+
+
+if (isset($_GET['controller'])) {
+    $action = $_GET['action'];
+    $controller = $_GET ['controller'];
+
+    if ($controller == "producto"){
+        $instance = new ProductoController($conn);
+        $instance->$action();
     }
-];
+
+   
+}
