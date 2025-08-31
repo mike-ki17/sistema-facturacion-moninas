@@ -3,38 +3,47 @@
 require_once __DIR__ . '/../models/Producto.php';
 
 class ProductoController {
-    private $productoModel;
+    private $producto;
 
     public function __construct($db) {
-        $this->productoModel = new Producto($db);
+        $this->producto = new Producto($db);
     }
 
     public function index() {
-        // $productos = $this->productoModel->getAll();
-        // include __DIR__ . '/../views/productos/index.php';
-        echo "Funca";
+        $productos = $this->producto->getAll();
+        include __DIR__ . '/../views/productos/index.php';
+
+    }
+
+    public function createForm() {
+        require __DIR__ . '/../views/productos/crear.php';
     }
 
 
-    Public function store () {
-       
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $result = $this->productoModel->create($_POST);
-            if ($result) {
-                header("Location: /views/productos/index.php");
-                exit;
-            }else {
-                echo "❌ Error al registrar el producto.";
-            }
+    Public function store ($new) {
+        if ($this->producto->create($new)) {
+            header("Location: /productos");
+            exit;
         }else {
-            echo "Método inválido.";
+            echo "❌ Error al registrar el producto.";
         }
+
+    }
+
+    public function edit($id) {
+        $producto = $this->producto->find($id);
+        require __DIR__ . '/../views/productos/edit.php';
+    }
+
+    public function update($data) {
+        $this->producto->update($data);
+        header("Location: /productos");
+        exit;
     }
 
     public function destroy ($id) {
-        if ($this->productoModel->delete($id)) {
-            // Redirige o muestra mensaje
-            header("Location: ./views/productos/index.php");
+        if ($this->producto->delete($id)) {
+            header("Location: /productos");
             exit();
         } else {
             echo "Error al eliminar el producto.";

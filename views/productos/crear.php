@@ -15,7 +15,7 @@
                 <h4 class="mb-0">Crear Producto</h4>
             </div>
             <div class="card-body">
-                <form action="../../routes/web.php?controller=producto&action=store" method="POST">
+                <form action="/productos/store" method="POST">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre del producto</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Producto" required>
@@ -47,7 +47,7 @@
                     </div> -->
 
                     <button type="submit" class="btn btn-success">Guardar</button>
-                    <a href="/index.php" class="btn btn-secondary">Cancelar</a>
+                    <a href="/productos" class="btn btn-secondary">Cancelar</a>
                 </form>
             </div>
         </div>

@@ -1,10 +1,3 @@
-<?php
-require_once __DIR__ . "/../../config/db.php";
-require_once __DIR__ . "/../../models/Producto.php";
-$instanceProductos = new Producto($conn);
-$productos = $instanceProductos->getAll();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -57,7 +50,7 @@ $productos = $instanceProductos->getAll();
         <h1 class="mb-4 text-center">Lista de productos</h1>
 
         <div class="d-flex justify-content-between mb-3">
-            <a href="crear.php" class="btn btn-primary w-100 w-sm-auto">+ Nuevo producto</a>
+            <a href="productos/form" class="btn btn-primary w-100 w-sm-auto">+ Nuevo producto</a>
         </div>
 
         <!-- 👇 Aquí el wrapper responsive -->
@@ -81,12 +74,18 @@ $productos = $instanceProductos->getAll();
                                 <td data-label="Precio">$<?= number_format($producto['precio'], 2) ?></td>
                                 <td data-label="Stock"><?= htmlspecialchars($producto['stock']) ?></td>
                                 <td data-label="Acciones" class="text-center">
-                                    <a href="#" class="btn btn-sm btn-warning mb-1">Editar</a>
-                                    <a href="../../eliminarProducto.php?id=<?= $producto['id'] ?>" 
-                                       class="btn btn-sm btn-danger"
-                                       onclick="return confirm('¿Seguro que deseas eliminar este producto?')">
-                                       Eliminar
+                                    <a href="/productos/editar?id=<?= $producto['id'] ?>" 
+                                        class="btn btn-sm btn-warning mb-1">
+                                        Editar  
                                     </a>
+                                    <form action="/productos/eliminar" method="POST" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?= $producto['id'] ?>">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-danger"
+                                                onclick="return confirm('¿Seguro que deseas eliminar este producto?')">
+                                            Eliminar
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
