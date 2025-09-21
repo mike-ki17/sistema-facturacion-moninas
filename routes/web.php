@@ -1,9 +1,7 @@
 <?php
-
 require_once __DIR__ . "/../controllers/ProductoController.php";
 require_once __DIR__ . '/../controllers/HomeController.php';
 require_once __DIR__ . '/../config/db.php';
-
 
 $controllerProducto = new ProductoController($conn);
 $controllerHome = new HomeController($conn);

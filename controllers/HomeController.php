@@ -1,6 +1,5 @@
 
 <?php
-
 require_once __DIR__ . '/../models/Usuario.php';
 
 class HomeController {
@@ -14,9 +13,8 @@ class HomeController {
     }
 
     private function startSession() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+        // La sesión ya se inicializa globalmente en config/session.php
+        // Este método se mantiene por compatibilidad pero no hace nada
     }
 
     public function index() {

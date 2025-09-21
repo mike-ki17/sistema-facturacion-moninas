@@ -1,0 +1,27 @@
+# Configuración para evitar problemas de headers
+php_flag output_buffering On
+php_value output_buffering 4096
+
+# Configuración de sesiones
+php_value session.auto_start 0
+php_value session.use_cookies 1
+php_value session.use_only_cookies 1
+php_value session.cookie_httponly 1
+
+# Configuración de errores (solo para desarrollo)
+# php_flag display_errors On
+# php_value error_reporting E_ALL
+
+# Configuración de errores para producción
+php_flag display_errors Off
+php_value error_reporting 0
+php_flag log_errors On
+
+# Configuración de charset
+AddDefaultCharset UTF-8
+
+# Configuración de reescritura de URLs
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
